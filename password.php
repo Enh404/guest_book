@@ -5,9 +5,8 @@ include_once 'includes/header.php';
 
 if ($_REQUEST['password'] == '1234')
 {
-    // here comes your delete query: use $_POST['deleteItem'] as your id
     $delete = $_REQUEST['idc'];
-    $sql = "DELETE FROM `notes` where `id` = '$delete'";
+    $sql = "DELETE FROM `database`.notes where `id` = '$delete'";
     $connector = new \DB\dbConnect();
     $connector->createMySQL()->query($sql);
     header('Location: index.php');

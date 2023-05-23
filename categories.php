@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 include_once 'includes/header.php';
 
 $category = $_REQUEST['id'];
-$sql = "SELECT * FROM `notes` WHERE `categories_pk` = '$category'";
+$sql = "SELECT * FROM `database`.notes WHERE `categories_pk` = '$category'";
 $connector = new \DB\dbConnect();
 $resSQL = $connector->createMySQL()->query($sql);
 while ($notes = $resSQL -> fetch_assoc()) {

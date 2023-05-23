@@ -27,11 +27,10 @@ require_once 'vendor/autoload.php';
             <a class="nav-link" href="index.php">Все отзывы</a>
         </li>
         <?php
-        $sql = "SELECT * FROM `categories`";
+        $sql = "SELECT * FROM `database`.categories";
         $connector = new \DB\dbConnect();
         $resSQL = $connector->createMySQL()->query($sql);
         while ($categories = $resSQL -> fetch_assoc()) {
-            // Выводим элемент списка
             echo '<li class="nav-item">';
             echo '<a class="nav-link" href="categories.php?id=' . $categories['id'] . '">' . $categories['title'] . '</a>';
             echo '</li>';

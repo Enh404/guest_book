@@ -9,7 +9,7 @@ class dbConnect
     private string $servername = "";
     private string $username = "";
     private string $password = "";
-    private string $BDname = "";
+    private string $BDname = "database";
 
     public function createMySQL(): mysqli|null
     {

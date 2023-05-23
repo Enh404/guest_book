@@ -6,10 +6,10 @@ use mysqli;
 
 class dbConnect
 {
-    private string $servername = "localhost";
-    private string $username = "root";
-    private string $password = "982104snikkir";
-    private string $BDname = "database";
+    private string $servername = "";
+    private string $username = "";
+    private string $password = "";
+    private string $BDname = "";
 
     public function createMySQL(): mysqli|null
     {

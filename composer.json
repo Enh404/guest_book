@@ -1,0 +1,12 @@
+{
+    "name": "sweetman/guest_book",
+    "autoload": {
+        "psr-4": {
+            "Classes\\": "classes/",
+            "DB\\": "db/"
+        }
+    },
+    "require": {
+      "ext-mysqli": "*"
+    }
+}

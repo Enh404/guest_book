@@ -3,12 +3,11 @@
 require_once 'vendor/autoload.php';
 include_once 'includes/header.php';
 
-if ($_REQUEST['password'] == '1234')
+if ($_REQUEST['password'] == $_ENV['ADMIN_PASSWORD'])
 {
     $delete = $_REQUEST['idc'];
     $sql = "DELETE FROM `database`.notes where `id` = '$delete'";
-    $connector = new \DB\dbConnect();
-    $connector->createMySQL()->query($sql);
+    $connector->query($sql);
     header('Location: index.php');
     exit();
 }

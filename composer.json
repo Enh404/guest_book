@@ -2,11 +2,11 @@
     "name": "sweetman/guest_book",
     "autoload": {
         "psr-4": {
-            "Classes\\": "classes/",
-            "DB\\": "db/"
+            "Classes\\": "classes/"
         }
     },
     "require": {
-      "ext-mysqli": "*"
+      "ext-mysqli": "*",
+        "vlucas/phpdotenv": "^5.5"
     }
 }

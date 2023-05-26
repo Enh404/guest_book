@@ -1,9 +1,3 @@
-<?php
-
-require_once 'vendor/autoload.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -27,9 +21,9 @@ require_once 'vendor/autoload.php';
             <a class="nav-link" href="index.php">Все отзывы</a>
         </li>
         <?php
-        $sql = "SELECT * FROM `database`.categories";
-        $connector = new \DB\dbConnect();
-        $resSQL = $connector->createMySQL()->query($sql);
+        require_once 'db.php';
+        $sql = "SELECT * FROM `categories`";
+        $resSQL = $connector->query($sql);
         while ($categories = $resSQL -> fetch_assoc()) {
             echo '<li class="nav-item">';
             echo '<a class="nav-link" href="categories.php?id=' . $categories['id'] . '">' . $categories['title'] . '</a>';

@@ -9,8 +9,7 @@ if ($_REQUEST['author'] and $_REQUEST['comment']) {
     $category = $_REQUEST['category'];
     $note = \Classes\NoteHelper::getNoteFactory($category)->createNote();
     $sql = $note->addToDB($author, $comment);
-    $connector = new \DB\dbConnect();
-    $connector->createMySQL()->query($sql);
+    $connector->query($sql);
     header('Location: index.php');
     exit();
 }

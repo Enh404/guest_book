@@ -5,8 +5,7 @@ include_once 'includes/header.php';
 
 $category = $_REQUEST['id'];
 $sql = "SELECT * FROM `database`.notes WHERE `categories_pk` = '$category'";
-$connector = new \DB\dbConnect();
-$resSQL = $connector->createMySQL()->query($sql);
+$resSQL = $connector->query($sql);
 while ($notes = $resSQL -> fetch_assoc()) {
     // Выводим элемент списка
     echo '<div style="border: 1px solid black;">';

@@ -26,7 +26,7 @@
         $resSQL = $connector->query($sql);
         while ($categories = $resSQL -> fetch_assoc()) {
             echo '<li class="nav-item">';
-            echo '<a class="nav-link" href="categories.php?id=' . $categories['id'] . '">' . $categories['title'] . '</a>';
+            echo '<a class="nav-link" href="index.php?id=' . $categories['id'] . '">' . $categories['title'] . '</a>';
             echo '</li>';
         }
         ?>

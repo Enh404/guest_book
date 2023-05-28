@@ -6,8 +6,14 @@ include_once 'includes/header.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$sql = "SELECT * FROM `notes`";
-//$connector = new mysqli($_ENV['SERVER_NAME'], $_ENV['USER_NAME'], $_ENV['PASSWORD'], $_ENV['DB_NAME']);
+
+if ($_REQUEST['id']) {
+    $category = $_REQUEST['id'];
+    $sql = "SELECT * FROM `notes` WHERE `categories_pk` = '$category'";
+} else {
+    $sql = "SELECT * FROM `notes`";
+}
+
 $resSQL = $connector->query($sql);
 while ($notes = $resSQL -> fetch_assoc()) {
     echo '<div style="border: 1px solid black;">';

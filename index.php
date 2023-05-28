@@ -6,7 +6,7 @@ include_once 'includes/header.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$sql = "SELECT * FROM `database`.notes";
+$sql = "SELECT * FROM `notes`";
 //$connector = new mysqli($_ENV['SERVER_NAME'], $_ENV['USER_NAME'], $_ENV['PASSWORD'], $_ENV['DB_NAME']);
 $resSQL = $connector->query($sql);
 while ($notes = $resSQL -> fetch_assoc()) {

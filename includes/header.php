@@ -21,9 +21,8 @@
             <a class="nav-link" href="index.php">Все отзывы</a>
         </li>
         <?php
-        require_once 'db.php';
-        $sql = "SELECT * FROM `categories`";
-        $resSQL = $connector->query($sql);
+        $database = new \Classes\Database();
+        $resSQL = $database->getCategoriesFromDB();
         while ($categories = $resSQL -> fetch_assoc()) {
             echo '<li class="nav-item">';
             echo '<a class="nav-link" href="index.php?id=' . $categories['id'] . '">' . $categories['title'] . '</a>';

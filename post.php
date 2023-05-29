@@ -6,10 +6,11 @@ include_once 'includes/header.php';
 if ($_REQUEST['author'] and $_REQUEST['comment']) {
     $author = $_REQUEST['author'];
     $comment = $_REQUEST['comment'];
-    $category = $_REQUEST['category'];
-    $note = \Classes\NoteHelper::getNoteFactory($category)->createNote();
-    $sql = $note->addToDB($author, $comment);
-    $connector->query($sql);
+    $category = new \Classes\Category($_REQUEST['category']);
+    $date = new DateTimeImmutable('now', new DateTimeZone('Europe/Moscow'));
+    $note = new \Classes\Note($author, $date->format('Y-m-d H:i:s'), $comment, $category);
+    $database = new \Classes\Database();
+    $database->addNoteToDB($note);
     header('Location: index.php');
     exit();
 }
@@ -25,9 +26,9 @@ if ($_REQUEST['author'] and $_REQUEST['comment']) {
             <form method="POST" action="">
                 <p><input placeholder="Ваше имя" name="author"></p>
                 <p><select name="category">
-                    <option>Общий</option>
-                    <option>Замечания</option>
-                    <option>Предложения</option>
+                    <option value="1">Общий</option>
+                    <option value="2">Замечания</option>
+                    <option value="3">Предложения</option>
                 </select></p>
                 <p><textarea placeholder="Ваш отзыв" name="comment"></textarea></p>
                 <div class="card-body">

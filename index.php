@@ -3,18 +3,15 @@
 require_once 'vendor/autoload.php';
 include_once 'includes/header.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
+$database = new \Classes\Database();
 
 if ($_REQUEST['id']) {
-    $category = $_REQUEST['id'];
-    $sql = "SELECT * FROM `notes` WHERE `categories_pk` = '$category'";
+    $resSQL = $database->getNotesFromDB($_REQUEST['id']);
 } else {
-    $sql = "SELECT * FROM `notes`";
+    $resSQL = $database->getNotesFromDB();
 }
 
-$resSQL = $connector->query($sql);
+
 while ($notes = $resSQL -> fetch_assoc()) {
     echo '<div style="border: 1px solid black;">';
     echo '<li class="nav-item"> Автор: ' . $notes['author'] . '</li>' . PHP_EOL;

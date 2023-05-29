@@ -5,9 +5,9 @@ include_once 'includes/header.php';
 
 if ($_REQUEST['password'] == $_ENV['ADMIN_PASSWORD'])
 {
-    $delete = $_REQUEST['idc'];
-    $sql = "DELETE FROM `notes` where `id` = '$delete'";
-    $connector->query($sql);
+    $noteId = $_REQUEST['idc'];
+    $database = new \Classes\Database();
+    $database->delNoteFromDB($noteId);
     header('Location: index.php');
     exit();
 }

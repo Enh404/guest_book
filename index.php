@@ -20,6 +20,3 @@ while ($notes = $resSQL -> fetch_assoc()) {
     echo '<a href="password.php?idc=' . $notes['id'] . '">Удалить отзыв</a>';
     echo  '</div>';
 }
-
-
-
